@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h2>{{ d }}</h2>
+<div class="card-columns">
+    {% for item in items %}
+    <div class="card">
+        <img src="{{ item.Image_URL }}" class="card-img-top" alt="Photo of Item" height=550px>
+        <div class="card-body">
+            <h5 class="card-title">{{ item.Title }}</h5>
+            <p class="card-text">{{ item.Description }}</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ item.Base_Price }}</li>
+                <li class="list-group-item">{{ item.category }}</li>
+            </ul>
+            <a href="{% url 'item' item.id %}" class="btn btn-primary">Place Bid</a>
+        </div>
+    </div>
+    {% empty %}
+    <h3>Its empty</h3>
+    {% endfor %}
+</div>
+{% endblock %}

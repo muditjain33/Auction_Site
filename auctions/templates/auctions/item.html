@@ -1,0 +1,70 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h2>{{ item.Title }}</h2>
+{% if user.is_authenticated %}
+<form action="{% url 'item' item.id %}" method="post">{% csrf_token %}</h2><button type="submit" name="add"
+    class="btn btn-secondary">{{w}}</button></form>
+{% endif %}
+<br>
+{% if a is 1 %}
+<form action="{% url 'activetoun' item.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-outline-dark">Close</button>
+</form>
+{% endif %}
+<div class="card" style="width:100%;">
+  <img src="{{ item.Image_URL }}" class="card-img-top" alt="Image" height="750px">
+  <div class="card-body">
+    <p class="card-text">{{ item.Description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Category:
+      {% if item.category is not none %}
+      {{ item.category }}
+      {% else %}
+      Not specified
+      {% endif %}
+    </li>
+    <li class="list-group-item">Listed by: {{ item.user.username }}</li>
+    <li class="list-group-item">Listed at: {{ item.Base_Price }}</li>
+    <li class="list-group-item">{{ item.noofbids }} bids so far.</li>
+  </ul>
+  {% if user.is_authenticated %}
+  <div class="card-body">
+    <form action="{% url 'item' item.id %}" method="post">
+      {% csrf_token %}
+      <input type="integer" name="Bid">
+      <input type="submit" value="Place Bid" name="bid">
+    </form>
+    {{ error }}
+  </div>
+  {% endif %}
+</div>
+<br>
+
+
+
+<div class="card">
+  <h5 class="card-header">Comments</h5>
+  {% for comment in comments %}
+  <div class="card-body">
+    <h5 class="card-title">By {{ comment.user.username }}</h5>
+    <p class="card-text">{{ comment.comment }}</p>
+  </div>
+  {% empty %}
+  <h5>Its empty</h5>
+  {% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+<form action="{% url 'item' item.id %}" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Comment</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+    <input type="submit" name="commentt">
+  </div>
+</form>
+{% endif %}
+{% endblock %}
