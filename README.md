@@ -21,17 +21,17 @@ This is the project I made which is an e-commerce auction site that will allow u
 
 Best Model : nearest-neighbor classifier
 <br>
-Correct: 4073
-Incorrect: 859
-True Positive Rate: 6.37%
-True Negative Rate: 76.22%
+Correct: 4073<br>
+Incorrect: 859<br>
+True Positive Rate: 6.37%<br>
+True Negative Rate: 76.22%<br>
 
 ## 3.Input/Output
 Input: Meta data along with search history
 <br>Output: Recommendation of product
 
 ## 4.Live Link
-Link : [http://mdauction.herokuapp.com/](http://mdauction.herokuapp.com/)
+Link : [http://mdauction.herokuapp.com/](http://mdauction.herokuapp.com/)<br>
 Video : [Design a eBay-like e-commerce auction site that will allow users to post auction listings,place bids](https://youtu.be/Mr235c-7P_A)
 
 ## 5.Screenshot of Interface
